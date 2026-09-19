@@ -4,7 +4,6 @@ export const categories = [
   "⚽ Спорт",
   "😂 Мемы",
   "🍔 Еда и напитки",
-
 ];
 
 export const points = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
@@ -25,7 +24,7 @@ export const questions = [
     value: 200,
     type: "image",
     text: "Из какого фильма этот кадр?",
-    image: "./src/images/kino_200.jpg",
+    image: "./src/images/kino_200.webp",
     answer: "Джанго освобождённый",
   },
   {
@@ -40,7 +39,7 @@ export const questions = [
     value: 400,
     type: "image",
     text: "Угадайте фильм по картинке",
-    image: "./src/images/kino_400.jpg",
+    image: "./src/images/kino_400.webp",
     answer: "Достучаться до небес",
   },
   {
@@ -56,7 +55,7 @@ export const questions = [
     value: 600,
     type: "image",
     text: "Угадайте фильм по этому кадру",
-    image: "./src/images/kino_600.jpg",
+    image: "./src/images/kino_600.webp",
     answer: "Иллюзия обмана",
   },
   {
@@ -71,7 +70,7 @@ export const questions = [
     value: 800,
     type: "image",
     text: "Угадайте фильм по кадру",
-    image: "./src/images/kino_800.jpg",
+    image: "./src/images/kino_800.webp",
     answer: "Облачный атлас",
   },
   {
@@ -86,7 +85,7 @@ export const questions = [
     value: 1000,
     type: "image",
     text: "Угадайте фильм по кадру",
-    image: "./src/images/kino_1000.jpg",
+    image: "./src/images/kino_1000.webp",
     answer: "12 обезьян",
   },
 
@@ -260,7 +259,7 @@ export const questions = [
     category: 3,
     value: 100,
     type: "image",
-    image: "./src/images/memes/1.png",
+    image: "./src/images/memes/1.webp",
     text: "Нельзя просто так взять и…",
     answer: "Властелин колец"
 },
@@ -269,7 +268,7 @@ export const questions = [
     category: 3,
     value: 200,
     type: "image",
-    image: "./src/images/memes/2.png",
+    image: "./src/images/memes/2.webp",
     text: "Макконахи нервно курит",
     answer: "Настоящий детектив"
 },
@@ -278,7 +277,7 @@ export const questions = [
     category: 3,
     value: 300,
     type: "image",
-    image: "./src/images/memes/3.jpg",
+    image: "./src/images/memes/3.webp",
     text: "Когда нужно сообщить, насколько вам безумно холодно",
     answer: "Сияние"
 },
@@ -305,7 +304,7 @@ export const questions = [
     category: 3,
     value: 600,
     type: "image",
-    image: "./src/images/memes/6.jpg",
+    image: "./src/images/memes/6.webp",
     text: "Сцена с удивлённым Джоуи",
     answer: "Друзья"
 },
@@ -314,7 +313,7 @@ export const questions = [
     category: 3,
     value: 700,
     type: "image",
-    image: "./src/images/memes/7.jpg",
+    image: "./src/images/memes/7.webp",
     text: "Когда вас кто-то и вправду достал, но вы не теряете бодрости духа",
     answer: "Американский психопат"
 },
@@ -323,7 +322,7 @@ export const questions = [
     category: 3,
     value: 800,
     type: "image",
-    image: "./src/images/memes/8.jpg",
+    image: "./src/images/memes/8.webp",
     text: "Когда что-то напряжённо считаешь",
     answer: "Мальчишник в Вегасе"
 },
@@ -332,7 +331,7 @@ export const questions = [
     category: 3,
     value: 900,
     type: "image",
-    image: "./src/images/memes/9.jpg",
+    image: "./src/images/memes/9.webp",
     text: "Да ладно?",
     answer: "Поцелуй вампира"
 },
@@ -341,7 +340,7 @@ export const questions = [
     category: 3,
     value: 1000,
     type: "image",
-    image: "./src/images/memes/10.jpg",
+    image: "./src/images/memes/10.webp",
     text: "Куда едем?",
     answer: "Ведьмина гора"
 },
