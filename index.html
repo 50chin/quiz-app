@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./src/script/main.js" type="module" defer></script>
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>КВИЗ</title>
+  </head>
+  <body>
+    <section id="startScreen" class="screen">
+      <div class="start-box">
+        <h1>КВИЗ КАПРИЗ</h1>
+        <div class="team-inputs">
+          <div class="input-group">
+            <label> Название команды 1 </label>
+
+            <input id="team1Input" type="text" placeholder="Например: Соколы" />
+          </div>
+
+          <div class="input-group">
+            <label> Название команды 2 </label>
+
+            <input id="team2Input" type="text" placeholder="Например: Тигры" />
+          </div>
+        </div>
+
+        <button class="primary-btn" onclick="startGame()">Начать игру</button>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     ИГРОВОЕ ПОЛЕ
+===================================================== -->
+
+    <section id="gameScreen" class="screen hidden">
+      <div class="top-bar">
+        <div class="game-title"></div>
+        <div class="top-actions">
+          <button class="small-btn" onclick="toggleFullscreen()">
+            ⛶ Полный экран
+          </button>
+
+          <button class="small-btn" onclick="restartGame()">
+            ↻ Новая игра
+          </button>
+        </div>
+      </div>
+
+      <!-- СЧЁТ -->
+
+      <div class="scores">
+        <!-- КОМАНДА 1 -->
+
+        <div class="score-card" id="scoreCard1">
+          <div>
+            <div class="team-name" id="team1Name">Команда 1</div>
+
+            <div class="score">
+              <span id="score1">0</span>
+            </div>
+          </div>
+
+          <div class="manual-controls">
+            <button onclick="changeScore(1, 100)">+100</button>
+
+            <button onclick="changeScore(1, -100)">−100</button>
+
+            <button onclick="changeScore(1, 200)">+200</button>
+
+            <button onclick="changeScore(1, -200)">−200</button>
+          </div>
+        </div>
+
+        <!-- КОМАНДА 2 -->
+
+        <div class="score-card" id="scoreCard2">
+          <div>
+            <div class="team-name" id="team2Name">Команда 2</div>
+
+            <div class="score">
+              <span id="score2">0</span>
+            </div>
+          </div>
+
+          <div class="manual-controls">
+            <button onclick="changeScore(2, 100)">+100</button>
+            <button onclick="changeScore(2, -100)">−100</button>
+            <button onclick="changeScore(2, 200)">+200</button>
+            <button onclick="changeScore(2, -200)">−200</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ДОСКА -->
+
+      <div class="board-wrapper">
+        <div id="board" class="board"></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     ЭКРАН ВОПРОСА
+===================================================== -->
+
+    <section id="questionScreen" class="screen hidden">
+      <div class="question-header">
+        <div>
+          <div id="questionCategory" class="question-category">Категория</div>
+        </div>
+
+        <div id="questionPoints" class="question-points">100</div>
+      </div>
+
+      <div class="question-box">
+        <div id="questionNumber" class="question-number">Вопрос</div>
+
+        <!-- ТЕКСТ ВОПРОСА -->
+
+        <div id="questionText" class="question-text"></div>
+
+        <!-- КАРТИНКА -->
+
+        <div id="mediaContainer"></div>
+
+        <!-- КТО ОТВЕЧАЕТ -->
+
+        <div class="answering">
+          <div class="answering-title">👋 Кто сейчас отвечает?</div>
+
+          <div class="answering-buttons">
+            <button id="answerTeam1Btn" onclick="selectAnsweringTeam(1)">
+              Команда 1
+            </button>
+
+            <button id="answerTeam2Btn" onclick="selectAnsweringTeam(2)">
+              Команда 2
+            </button>
+
+            <button onclick="clearAnsweringTeam()">Никто</button>
+          </div>
+        </div>
+
+        <!-- БАЛЛЫ -->
+
+        <div class="scoring">
+          <div class="scoring-title">
+            💰 Ведущий выбирает, кому начислить или снять баллы
+          </div>
+
+          <div class="score-buttons">
+            <!-- =========================
+             ЗЕЛЁНЫЕ — ДОБАВИТЬ
+        ========================== -->
+
+            <button class="score-btn plus" onclick="scoreQuestion(1, 1)">
+              🟢
+              <span id="plusTeam1"> Команда 1 </span>
+            </button>
+
+            <button class="score-btn plus" onclick="scoreQuestion(2, 1)">
+              🟢
+              <span id="plusTeam2"> Команда 2 </span>
+            </button>
+
+            <!-- =========================
+             КРАСНЫЕ — УБАВИТЬ
+        ========================== -->
+
+            <button class="score-btn minus" onclick="scoreQuestion(1, -1)">
+              🔴
+              <span id="minusTeam1"> Команда 1 </span>
+              −
+              <span class="currentPoints"> 100 </span>
+            </button>
+
+            <button class="score-btn minus" onclick="scoreQuestion(2, -1)">
+              🔴
+              <span id="minusTeam2"> Команда 2 </span>
+              −
+              <span class="currentPoints"> 100 </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ОТВЕТ -->
+
+        <div id="answerBox" class="answer-box hidden">
+          <div class="answer-title">Правильный ответ</div>
+
+          <div id="answerText"></div>
+        </div>
+
+        <!-- КНОПКИ -->
+
+        <div class="question-main-actions">
+          <button id="showAnswerBtn" class="primary-btn" onclick="showAnswer()">
+            👀 Показать ответ
+          </button>
+
+          <button class="exit-btn" onclick="exitQuestion()">
+            ← Выйти из вопроса
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     ФИНАЛ
+===================================================== -->
+
+    <section id="finalScreen" class="screen hidden">
+      <div class="final-box">
+        <h1>🏆 ИГРА ОКОНЧЕНА!</h1>
+
+        <div id="winnerText" class="winner">Победитель</div>
+
+        <div class="final-scores">
+          <div class="final-score">
+            <div id="finalTeam1" class="final-score-name">Команда 1</div>
+
+            <div id="finalScore1" class="final-score-value">0</div>
+          </div>
+
+          <div class="final-score">
+            <div id="finalTeam2" class="final-score-name">Команда 2</div>
+
+            <div id="finalScore2" class="final-score-value">0</div>
+          </div>
+        </div>
+
+        <button class="primary-btn" onclick="restartGame()">
+          🔄 Новая игра
+        </button>
+      </div>
+    </section>
+  </body>
+</html>
